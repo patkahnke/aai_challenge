@@ -1,0 +1,17 @@
+#Define route to the main page of the AAI MovieShare site
+
+proof_api.all_movies:
+  path: '/all_movies'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::allMovies'
+    _title: "All Movies"
+  requirements:
+    _permission: 'access content'
+
+proof_api.top_ten:
+  path: '/top_ten_by_views'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTen'
+    _title: "Top Ten Most-Viewed Movies"
+  requirements:
+    _permission: 'access content'

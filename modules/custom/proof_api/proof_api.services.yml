@@ -1,0 +1,3 @@
+services:
+  proof_api.get_all_movies:
+    class: Drupal\proof_api\ProofAPIRequests\GetAllMovies
