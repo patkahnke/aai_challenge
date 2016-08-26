@@ -3,37 +3,52 @@
 namespace Drupal\proof_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\proof_api\ProofAPIRequests\GetAllMovies;
+use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProofAPIController extends ControllerBase
 {
-    private $getAllMovies;
+    private $proofAPIRequests;
 
-    public function __construct(GetAllMovies $getAllMovies)
-{
-    $this->getAllMovies = $getAllMovies;
-}
-
-    public function allMovies()
-{
-    $allMovies = $this->getAllMovies->listAllMovies();
-
-    return new Response($allMovies);
-}
-
-    public function topTen()
+    public function __construct(ProofAPIRequests $proofAPIRequests)
     {
-        $topTenByViews = $this->getAllMovies->listTopTenByViews();
-
-        return new Response($topTenByViews);
+        $this->proofAPIRequests = $proofAPIRequests;
     }
 
-    public static function create(ContainerInterface $container)
-{
-    $getAllMovies = $container->get('proof_api.get_all_movies');
+    public function allMovies()
+    {
+        $this->proofAPIRequests->listAllMovies();
 
-    return new static($getAllMovies);
-}
+        return new Response();
+    }
+
+    public function topTenByViews()
+    {
+        $this->proofAPIRequests->listTopTenByViews();
+
+        return new Response();
+    }
+
+    public function topTenByVotes()
+    {
+        $this->proofAPIRequests->listTopTenByVotes();
+
+        return new Response();
+    }
+
+    public function newMovie()
+    {
+        $this->proofAPIRequests->postNewMovie();
+        $this->proofAPIRequests->listAllMovies();
+
+        return new Response();
+    }
+
+        public static function create(ContainerInterface $container)
+    {
+        $proofAPIRequests = $container->get('proof_api.proof_api_requests');
+
+        return new static($proofAPIRequests);
+    }
 }

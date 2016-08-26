@@ -1,3 +1,5 @@
 services:
-  proof_api.get_all_movies:
-    class: Drupal\proof_api\ProofAPIRequests\GetAllMovies
+  proof_api.proof_api_requests:
+    class: Drupal\proof_api\ProofAPIRequests\ProofAPIRequests
+  proof_api.proof_api_forms:
+    class: Drupal\proof_api\ProofAPIForms\NewMovieForm

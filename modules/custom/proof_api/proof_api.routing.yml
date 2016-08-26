@@ -8,10 +8,26 @@ proof_api.all_movies:
   requirements:
     _permission: 'access content'
 
-proof_api.top_ten:
+proof_api.top_ten_by_views:
   path: '/top_ten_by_views'
   defaults:
-    _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTen'
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTenByViews'
     _title: "Top Ten Most-Viewed Movies"
+  requirements:
+    _permission: 'access content'
+
+proof_api.top_ten_by_votes:
+  path: '/top_ten_by_votes'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTenByVotes'
+    _title: "Top Ten Voted Movies"
+  requirements:
+    _permission: 'access content'
+
+proof_api.new_movie:
+  path: '/new_movie'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newMovie'
+    _title: "Post New Movie"
   requirements:
     _permission: 'access content'
