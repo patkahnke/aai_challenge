@@ -25,11 +25,11 @@ class ProofAPIRequests
         curl_close($ch);
 
         $json = json_decode($response, true);
-        $dataArray = $json[data];
+        $dataArray = $json['data'];
         $createdAt = array();
 
         foreach ($dataArray as $movie) {
-            $createdAt[] = $movie[attributes][created_at];
+            $createdAt[] = $movie['attributes']['created_at'];
         }
 
         array_multisort($createdAt, SORT_DESC, $dataArray);
@@ -38,7 +38,7 @@ class ProofAPIRequests
 
             for ($i = 0; $i < count($dataArray); $i++) {
 
-                print "<tr><td><a href='" . $dataArray[$i][attributes][url] . "'>" . $dataArray[$i][attributes][title] . "</td>";
+                print "<tr><td><a href='" . $dataArray[$i]['attributes']['url'] . "'>" . $dataArray[$i]['attributes']['title'] . "</td>";
             }
 
             print "</table>";
@@ -61,11 +61,11 @@ class ProofAPIRequests
         curl_close($ch);
 
         $json = json_decode($response, true);
-        $dataArray = $json[data];
+        $dataArray = $json['data'];
         $viewTally = array();
 
         foreach ($dataArray as $movie) {
-            $viewTally[] = $movie[attributes][view_tally];
+            $viewTally[] = $movie['attributes']['view_tally'];
         }
 
         array_multisort($viewTally, SORT_DESC, $dataArray);
@@ -74,7 +74,7 @@ class ProofAPIRequests
 
         for ($i = 0; $i < 4; $i++) {
 
-            print "<tr><td>" . ($i + 1) . ")</td><td>" . "<a href='" . $dataArray[$i][attributes][url] . "'>" . $dataArray[$i][attributes][title] . "</td><td>" . $dataArray[$i][attributes][view_tally] . " views</td>";
+            print "<tr><td>" . ($i + 1) . ")</td><td>" . "<a href='" . $dataArray[$i]['attributes']['url'] . "'>" . $dataArray[$i]['attributes']['title'] . "</td><td>" . $dataArray[$i]['attributes']['view_tally'] . " views</td>";
         }
 
         print "</table>";
@@ -97,11 +97,11 @@ class ProofAPIRequests
         curl_close($ch);
 
         $json = json_decode($response, true);
-        $dataArray = $json[data];
+        $dataArray = $json['data'];
         $voteTally = array();
 
         foreach ($dataArray as $movie) {
-            $voteTally[] = $movie[attributes][vote_tally];
+            $voteTally[] = $movie['attributes']['vote_tally'];
         }
 
         array_multisort($voteTally, SORT_DESC, $dataArray);
@@ -110,13 +110,13 @@ class ProofAPIRequests
 
         for ($i = 0; $i < count($dataArray) && $i < 10; $i++) {
 
-            print "<tr><td>" . ($i + 1) . ")</td><td>" . "<a href='" . $dataArray[$i][attributes][url] . "'>" . $dataArray[$i][attributes][title] . "</td><td>" . $dataArray[$i][attributes][vote_tally] . " votes</td>";
+            print "<tr><td>" . ($i + 1) . ")</td><td>" . "<a href='" . $dataArray[$i]['attributes']['url'] . "'>" . $dataArray[$i]['attributes']['title'] . "</td><td>" . $dataArray[$i]['attributes']['vote_tally'] . " votes</td>";
         }
 
         print "</table>";
     }
 
-    public function postNewMovie()
+    public function postNewMovie($title, $url, $slug)
     {
         $ch = curl_init();
 
@@ -127,9 +127,9 @@ class ProofAPIRequests
         curl_setopt($ch, CURLOPT_POST, TRUE);
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-            \"title\": \"The Replacements: Talent Show\",
-            \"url\": \"https://www.youtube.com/watch?v=nQ27W-2OWwQ\",
-            \"slug\": \"replacements-talent-show\"
+            \"title\": \"{$title}\",
+            \"url\": \"{$url}\",
+            \"slug\": \"{$slug}\"
         }");
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(

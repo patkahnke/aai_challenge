@@ -31,3 +31,11 @@ proof_api.new_movie:
     _title: "Post New Movie"
   requirements:
     _permission: 'access content'
+
+proof_api.new_movie_form:
+  path: '/new_movie_form'
+  defaults:
+    _title: 'Post a New Movie'
+    _form: '\Drupal\proof_api\ProofAPIForms\NewMovieForm'
+  requirements:
+    _permission: 'access content'

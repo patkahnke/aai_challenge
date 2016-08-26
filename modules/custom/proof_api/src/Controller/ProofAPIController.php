@@ -39,16 +39,15 @@ class ProofAPIController extends ControllerBase
 
     public function newMovie()
     {
-        $this->proofAPIRequests->postNewMovie();
-        $this->proofAPIRequests->listAllMovies();
-
-        return new Response();
+        return $this->redirect('proof_api.new_movie_form');
     }
 
-        public static function create(ContainerInterface $container)
+    public static function create(ContainerInterface $container)
     {
         $proofAPIRequests = $container->get('proof_api.proof_api_requests');
 
         return new static($proofAPIRequests);
     }
+
+
 }
