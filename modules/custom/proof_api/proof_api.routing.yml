@@ -39,3 +39,19 @@ proof_api.new_movie_form:
     _form: '\Drupal\proof_api\ProofAPIForms\NewMovieForm'
   requirements:
     _permission: 'access content'
+
+proof_api.new_vote:
+  path: '/new_vote'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newVote'
+    _title: "Vote Up or Down"
+  requirements:
+    _permission: 'access content'
+
+proof_api.view_movie:
+  path: '/view_movie'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::viewMovie'
+    _title: "Watch a movie"
+  requirements:
+    _permission: 'access content'
