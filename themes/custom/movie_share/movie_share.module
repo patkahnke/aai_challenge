@@ -1,0 +1,22 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: patrickkahnke
+ * Date: 8/28/16
+ * Time: 8:26 PM
+ */
+
+function movie_share_theme() {
+    return array
+    (
+        'movie_share' => array
+        (
+            'variables' => array
+            (
+                'videoName' => null,
+                'url' => null,
+            ),
+            'template' => 'movie_share',
+        ),
+    );
+}

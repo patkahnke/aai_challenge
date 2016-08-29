@@ -16,20 +16,23 @@ class ProofAPIController extends ControllerBase
         $this->proofAPIRequests = $proofAPIRequests;
     }
 
+    /**
+     * @return array
+     */
     public function allMovies()
     {
         $response = $this->proofAPIRequests->listAllMovies();
 
-//        $json = json_decode($response, true);
-//        $dataArray = $json['data'];
-//        $createdAt = array();
-//
-//        foreach ($dataArray as $movie) {
-//            $createdAt[] = $movie['attributes']['created_at'];
-//        }
-//
-//        array_multisort($createdAt, SORT_DESC, $dataArray);
-//
+        $json = json_decode($response, true);
+        $dataArray = $json['data'];
+        $createdAt = array();
+
+        foreach ($dataArray as $movie) {
+            $createdAt[] = $movie['attributes']['created_at'];
+        }
+
+        array_multisort($createdAt, SORT_DESC, $dataArray);
+
 //        print "<table>";
 //
 //            for ($i = 0; $i < count($dataArray); $i++) {
@@ -39,7 +42,14 @@ class ProofAPIController extends ControllerBase
 //
 //            print "</table>";
 
-        return new Response($response);
+        $page = array(
+            '#theme' => 'movie_share',
+            '#title' => $this->t('New Title'),
+            '#videoName' => $this->t('The Mountain'),
+            '#url' => $this->t('http://vimeo.com/22439234'),
+        );
+
+        return $page;
 
     }
 
