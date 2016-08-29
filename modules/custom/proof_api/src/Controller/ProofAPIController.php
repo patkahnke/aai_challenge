@@ -35,8 +35,7 @@ class ProofAPIController extends ControllerBase
 
         $page = array(
             '#theme' => 'movies',
-            '#title' => $this->t('All Videos'),
-            '$movies' => $dataArray,
+            '#movies' => $dataArray,
         );
         
         return $page;
@@ -55,19 +54,14 @@ class ProofAPIController extends ControllerBase
             $viewTally[] = $movie['attributes']['view_tally'];
         }
 
-        array_multisort($viewTally, SORT_DESC, $dataArray);
+        array_multisort($view_tally, SORT_DESC, $dataArray);
 
-        print "<table>";
+        $page = array(
+            '#theme' => 'movies_top_ten_by_views',
+            '#movies' => $dataArray,
+        );
 
-        for ($i = 0; $i < count($dataArray) && $i < 10; $i++) {
-
-            print "<tr><td>" . ($i + 1) . ")</td><td>" . "<a href='./view_movie'>" .
-                $dataArray[$i]['attributes']['title'] . "</td><td>" . $dataArray[$i]['attributes']['view_tally'] . " views</td>";
-        }
-
-        print "</table>";
-
-        return new Response();
+        return $page;
     }
 
     public function topTenByVotes()

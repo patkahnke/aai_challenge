@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fdbbe776-4025-4232-bf74-52527b181964" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/themes/custom/movie_share/logo.svg" afterPath="$PROJECT_DIR$/themes/custom/movies/logo.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/themes/custom/movie_share/movie_share.info.yml" afterPath="$PROJECT_DIR$/themes/custom/movies/movies.info.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/themes/custom/movie_share/movie_share.module" afterPath="$PROJECT_DIR$/modules/custom/proof_api/proof_api.module" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/themes/custom/movie_share/templates/movie_share.html.twig" afterPath="$PROJECT_DIR$/themes/custom/movies/templates/movies.html.twig" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/themes/custom/movies/templates/movies.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/custom/proof_api/proof_api.module" afterPath="$PROJECT_DIR$/modules/custom/proof_api/proof_api.module" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/custom/proof_api/src/Controller/ProofAPIController.php" afterPath="$PROJECT_DIR$/modules/custom/proof_api/src/Controller/ProofAPIController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/default/default.services.yml" afterPath="$PROJECT_DIR$/sites/default/default.services.yml" />
     </list>
     <ignored path="aai_challenge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,13 +29,32 @@
       <file leaf-file-name="ProofAPIController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/src/Controller/ProofAPIController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+            <state relative-caret-position="255">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
               <folding>
                 <element signature="e#47#89#0#PHP" expanded="true" />
-                <marker date="1472444350000" expanded="true" signature="1510:1645" ph="..." />
-                <marker date="1472444350000" expanded="true" signature="2312:2455" ph="..." />
+                <marker date="1472502683000" expanded="true" signature="2035:2178" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movies.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/custom/movies/templates/movies.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proof_api.module" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/proof_api.module">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,48 +64,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proof_api.routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/proof_api.routing.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proof_api.module" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/proof_api.module">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-              <folding>
-                <element signature="e#6#94#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="movies.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/custom/movies/templates/movies.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="120" column="44" selection-start-line="120" selection-start-column="44" selection-end-line="120" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.services.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/default/default.services.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="49" column="76" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -122,8 +96,9 @@
         <option value="$PROJECT_DIR$/themes/custom/movie_share/movie_share.module" />
         <option value="$PROJECT_DIR$/sites/default/default.services.yml" />
         <option value="$PROJECT_DIR$/themes/custom/movies/movies.info.yml" />
-        <option value="$PROJECT_DIR$/modules/custom/proof_api/proof_api.module" />
+        <option value="$PROJECT_DIR$/themes/custom/movies/templates/movies_top_ten_views.html.twig" />
         <option value="$PROJECT_DIR$/modules/custom/proof_api/src/Controller/ProofAPIController.php" />
+        <option value="$PROJECT_DIR$/modules/custom/proof_api/proof_api.module" />
         <option value="$PROJECT_DIR$/themes/custom/movies/templates/movies.html.twig" />
       </list>
     </option>
@@ -328,6 +303,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/themes/custom/movies/templates" />
       <recent name="$PROJECT_DIR$/themes/custom/movie_share" />
       <recent name="$PROJECT_DIR$/sites/default" />
       <recent name="$PROJECT_DIR$/themes/custom/movie_share/templates" />
@@ -400,16 +376,16 @@
       <option name="presentableId" value="Default" />
       <updated>1472062782381</updated>
       <workItem from="1472062783549" duration="43891000" />
-      <workItem from="1472343517908" duration="22291000" />
+      <workItem from="1472343517908" duration="31448000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66182000" />
+    <option name="totallyTimeSpent" value="75339000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="813" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="813" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24391988" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -452,8 +428,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#47#89#0#PHP" expanded="true" />
-            <marker date="1472444350000" expanded="true" signature="1510:1645" ph="..." />
-            <marker date="1472444350000" expanded="true" signature="2312:2455" ph="..." />
+            <marker date="1472502683000" expanded="true" signature="2035:2178" ph="..." />
           </folding>
         </state>
       </provider>
@@ -503,13 +478,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/src/Forms/Forms.php" />
-    <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/src/ProofAPIForms/NewMovieForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1086">
-          <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sites/example.settings.local.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -569,24 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
-          <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/default/default.services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="49" column="76" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
           <folding />
         </state>
       </provider>
@@ -607,6 +557,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites/default/default.services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="49" column="76" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/movies/templates/movies_top_ten_by_views.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/src/ProofAPIForms/NewMovieForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+          <folding>
+            <element signature="e#50#89#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/templates/block/block.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="54" column="2" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/proof_api.routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/movies/movies.info.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -615,40 +607,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/proof_api.routing.yml">
+    <entry file="file://$PROJECT_DIR$/themes/README.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/movies/templates/videos.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/proof_api.module">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/custom/proof_api/src/Controller/ProofAPIController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
           <folding>
             <element signature="e#47#89#0#PHP" expanded="true" />
-            <marker date="1472444350000" expanded="true" signature="1510:1645" ph="..." />
-            <marker date="1472444350000" expanded="true" signature="2312:2455" ph="..." />
+            <marker date="1472502683000" expanded="true" signature="2035:2178" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/movies/templates/movies.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="120" column="44" selection-start-line="120" selection-start-column="44" selection-end-line="120" selection-end-column="44" />
+        <state relative-caret-position="240">
+          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding />
         </state>
       </provider>

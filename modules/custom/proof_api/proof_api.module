@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: patrickkahnke
- * Date: 8/28/16
- * Time: 8:26 PM
- */
 
-function movies_theme() {
+function movies_theme()
+{
     return array
     (
         'movies' => array
