@@ -116,8 +116,17 @@
       {% endif %}
 
       {# Content #}
-        <h1>Content should be here:</h1>
-        <h2><a href=" {{ url }}"> {{ videoName }} </a></h2>
+        <h1>Check out all the videos!</h1>
+        <ul>
+            {% for i in 0..{{ loop.length }} %}
+
+            <li><a href=" {{ movies[i][attributes][url] }} "> {{ movies[i][attributes][title] }} </li>
+            {% endfor %}
+
+            {#{% for movie in movies %}#}
+                {#<li><a href=" {{ movie[attributes][url] }} "> {{ movie[attributes][title] }} </a></li>#}
+        </ul>
+
       {%
         set content_classes = [
           page.sidebar_first and page.sidebar_second ? 'col-sm-6',

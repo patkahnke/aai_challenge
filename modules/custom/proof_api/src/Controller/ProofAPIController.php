@@ -33,22 +33,12 @@ class ProofAPIController extends ControllerBase
 
         array_multisort($createdAt, SORT_DESC, $dataArray);
 
-//        print "<table>";
-//
-//            for ($i = 0; $i < count($dataArray); $i++) {
-//
-//                print "<tr><td><a href='" . $dataArray[$i]['attributes']['url'] . "'>" . $dataArray[$i]['attributes']['title'] . "</td>";
-//            }
-//
-//            print "</table>";
-
         $page = array(
-            '#theme' => 'movie_share',
-            '#title' => $this->t('New Title'),
-            '#videoName' => $this->t('The Mountain'),
-            '#url' => $this->t('http://vimeo.com/22439234'),
+            '#theme' => 'movies',
+            '#title' => $this->t('All Videos'),
+            '$movies' => $dataArray,
         );
-
+        
         return $page;
 
     }

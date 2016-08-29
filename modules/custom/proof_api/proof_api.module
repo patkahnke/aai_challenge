@@ -6,17 +6,16 @@
  * Time: 8:26 PM
  */
 
-function movie_share_theme() {
+function movies_theme() {
     return array
     (
-        'movie_share' => array
+        'movies' => array
         (
             'variables' => array
             (
-                'videoName' => null,
-                'url' => null,
+                'movies' => null,
             ),
-            'template' => 'movie_share',
+            'template' => 'movies',
         ),
     );
 }
