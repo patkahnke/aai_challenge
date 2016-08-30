@@ -4,7 +4,7 @@ proof_api.all_movies:
   path: '/all_movies'
   defaults:
     _controller: '\Drupal\proof_api\Controller\ProofAPIController::allMovies'
-    _title: "All Movies"
+    _title: "All Videos"
   requirements:
     _permission: 'access content'
 
@@ -12,7 +12,7 @@ proof_api.top_ten_by_views:
   path: '/top_ten_by_views'
   defaults:
     _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTenByViews'
-    _title: "Top Ten Most-Viewed Movies"
+    _title: "Top Ten Most-Viewed Videos"
   requirements:
     _permission: 'access content'
 
@@ -20,7 +20,7 @@ proof_api.top_ten_by_votes:
   path: '/top_ten_by_votes'
   defaults:
     _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTenByVotes'
-    _title: "Top Ten Voted Movies"
+    _title: "Top Ten Most-Voted Videos"
   requirements:
     _permission: 'access content'
 
@@ -28,14 +28,14 @@ proof_api.new_movie:
   path: '/new_movie'
   defaults:
     _controller: '\Drupal\proof_api\Controller\ProofAPIController::newMovie'
-    _title: "Post New Movie"
+    _title: "Post New Video"
   requirements:
     _permission: 'access content'
 
 proof_api.new_movie_form:
   path: '/new_movie_form'
   defaults:
-    _title: 'Post a New Movie'
+    _title: 'Post a New Video'
     _form: '\Drupal\proof_api\ProofAPIForms\NewMovieForm'
   requirements:
     _permission: 'access content'
@@ -49,9 +49,9 @@ proof_api.new_vote:
     _permission: 'access content'
 
 proof_api.view_movie:
-  path: '/view_movie'
+  path: '/view_movie/{videoID}'
   defaults:
     _controller: '\Drupal\proof_api\Controller\ProofAPIController::viewMovie'
-    _title: "Watch a movie"
+    _title: "Watch a Video"
   requirements:
     _permission: 'access content'

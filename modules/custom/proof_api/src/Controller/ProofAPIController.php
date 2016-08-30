@@ -3,6 +3,7 @@
 namespace Drupal\proof_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,10 +55,11 @@ class ProofAPIController extends ControllerBase
             $viewTally[] = $movie['attributes']['view_tally'];
         }
 
-        array_multisort($view_tally, SORT_DESC, $dataArray);
+        array_multisort($viewTally, SORT_DESC, $dataArray);
+        $dataArray = array_slice($dataArray, 0, 10, true);
 
         $page = array(
-            '#theme' => 'movies_top_ten_by_views',
+            '#theme' => 'movies',
             '#movies' => $dataArray,
         );
 
@@ -68,27 +70,23 @@ class ProofAPIController extends ControllerBase
     {
         $response = $this->proofAPIRequests->listTopTenByVotes();
 
-//        $json = json_decode($response, true);
-//        $dataArray = $json['data'];
-//        $voteTally = array();
-//
-//        foreach ($dataArray as $movie) {
-//            $voteTally[] = $movie['attributes']['vote_tally'];
-//        }
-//
-//        array_multisort($voteTally, SORT_DESC, $dataArray);
-//
-//        print "<table>";
-//
-//        for ($i = 0; $i < count($dataArray) && $i < 10; $i++) {
-//
-//            print "<tr><td>" . ($i + 1) . ")</td><td>" . "<a href='" . $dataArray[$i]['attributes']['url'] . "'>" .
-//                $dataArray[$i]['attributes']['title'] . "</td><td>" . $dataArray[$i]['attributes']['vote_tally'] . " votes</td>";
-//        }
-//
-//        print "</table>";
+        $json = json_decode($response, true);
+        $dataArray = $json['data'];
+        $voteTally = array();
 
-        return new Response($response);
+        foreach ($dataArray as $movie) {
+            $voteTally[] = $movie['attributes']['vote_tally'];
+        }
+
+        array_multisort($voteTally, SORT_DESC, $dataArray);
+        $dataArray = array_slice($dataArray, 0, 10, true);
+
+        $page = array(
+            '#theme' => 'movies',
+            '#movies' => $dataArray,
+        );
+
+        return $page;
     }
 
     public function newMovie()
@@ -103,11 +101,15 @@ class ProofAPIController extends ControllerBase
         return $this->redirect('proof_api.top_ten_by_votes');
     }
 
-    public function viewMovie()
+    public function viewMovie($videoID)
     {
-        $this->proofAPIRequests->postNewView();
 
-        return new Response();
+        $response = $this->proofAPIRequests->getVideo($videoID);
+        $json = json_decode($response, true);
+        $url = $json['data']['attributes']['url'];
+        //$this->proofAPIRequests->postNewView($videoID);
+
+        return new TrustedRedirectResponse($url);
     }
 
     public static function create(ContainerInterface $container)

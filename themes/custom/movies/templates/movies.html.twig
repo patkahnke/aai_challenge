@@ -97,7 +97,7 @@
     <div role="main" class="main-container {{ container }} js-quickedit-main-content">
         <div class="row">
 
-            {# Header #}
+             {# Header #}
             {% if page.header %}
                 {% block header %}
                     <div class="col-sm-12" role="heading">
@@ -106,7 +106,7 @@
                 {% endblock %}
             {% endif %}
 
-            {# Sidebar First #}
+             {# Sidebar First #}
             {% if page.sidebar_first %}
                 {% block sidebar_first %}
                     <aside class="col-sm-3" role="complementary">
@@ -116,18 +116,34 @@
             {% endif %}
 
             {# Content #}
-            <div class="movie-list">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="movie-list, container, col-sm-8">
+                <div class="row">
+                    <h4>
+                        <div class="col-sm-5">Video</div>
+                        <div class="col-sm-1">Views</div>
+                        <div class="col-sm-1">Votes</div><br>
+                    </h4>
+                </div>
+                <div class="row">
+                    <ul>
+                        {% for movie in movies %}
 
-            <ul>
-                <Video</th><th>Views</th><th>Votes</th>
-                {% for movie in movies %}
+                            <div class="row, movie-list-items">
+                                <div class="col-sm-5">{{ link(movie.attributes.title, 'http://aai_challenge.dd:8083/view_movie/' ~ movie.id ) }}</div>
+                                {#<div class="col-sm-5"><video id="embedded-video" src="{{ movie.attributes.url }}" controls></div>#}
+                                <div class="col-sm-1">{{ movie.attributes.view_tally }}</div>
+                                <div class="col-sm-1">{{ movie.attributes.vote_tally }}</div>
+                            </div><br>
 
-                   <td>{{ link(movie.attributes.title, movie.attributes.url) }}</td><td>{{ movie.attributes.view_tally }}</td><td>{{ movie.attributes.vote_tally }}</td>
+                        {% endfor %}
 
-                {% endfor %}
-
-            </ul>
+                    </ul>
+                </div>
             </div>
+            <div class="col-sm-2"></div>
+        </div>
 
             {%
             set content_classes = [

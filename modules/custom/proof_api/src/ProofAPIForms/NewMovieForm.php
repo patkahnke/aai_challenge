@@ -38,7 +38,7 @@ class NewMovieForm extends FormBase
 
         $form['slug'] = array(
             '#type' => 'textfield',
-            '#title' => t('name-in-this-format'),
+            '#title' => t('Movie Slug: name-in-this-format'),
             '#required' => TRUE,
             );
 
@@ -66,8 +66,6 @@ class NewMovieForm extends FormBase
         $title = $form_state->getValue('title');
         $url = $form_state->getValue('url');
         $slug = $form_state->getValue('slug');
-
-        //var_dump($title, $url, $slug)/die();
 
         $this->proofAPIRequests->postNewMovie($title, $url, $slug);
 
