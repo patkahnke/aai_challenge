@@ -1,9 +1,9 @@
 #Define route to the main page of the AAI MovieShare site
 
-proof_api.all_movies:
-  path: '/all_movies'
+proof_api.all_videos:
+  path: '/all_videos'
   defaults:
-    _controller: '\Drupal\proof_api\Controller\ProofAPIController::allMovies'
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::allVideos'
     _title: "All Videos"
   requirements:
     _permission: 'access content'
@@ -40,11 +40,19 @@ proof_api.new_movie_form:
   requirements:
     _permission: 'access content'
 
-proof_api.new_vote:
-  path: '/new_vote'
+proof_api.vote_up:
+  path: '/vote_up/{videoID}/{redirectTo}'
   defaults:
-    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newVote'
-    _title: "Vote Up or Down"
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::voteUp'
+    _title: "Vote Up"
+  requirements:
+    _permission: 'access content'
+
+proof_api.vote_down:
+  path: '/vote_down/{videoID}/{redirectTo}'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::voteDown'
+    _title: "Vote Down"
   requirements:
     _permission: 'access content'
 

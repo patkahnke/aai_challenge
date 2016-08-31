@@ -132,9 +132,10 @@
 
                             <div class="row, movie-list-items">
                                 <div class="col-sm-5">{{ link(movie.attributes.title, 'http://aai_challenge.dd:8083/view_movie/' ~ movie.id ) }}</div>
-                                {#<div class="col-sm-5"><video id="embedded-video" src="{{ movie.attributes.url }}" controls></div>#}
                                 <div class="col-sm-1">{{ movie.attributes.view_tally }}</div>
                                 <div class="col-sm-1">{{ movie.attributes.vote_tally }}</div>
+                                <div class="col-sm-1">{{ link("Vote Up", 'http://aai_challenge.dd:8083/vote_up/' ~ movie.id ~ '/' ~ redirectTo ) }}</div>
+                                <div class="col-sm-1">{{ link("Vote Down", 'http://aai_challenge.dd:8083/vote_down/' ~ movie.id ~ '/' ~ redirectTo ) }}</div>
                             </div><br>
 
                         {% endfor %}

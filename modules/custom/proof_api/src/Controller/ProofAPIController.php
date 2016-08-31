@@ -6,7 +6,6 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 class ProofAPIController extends ControllerBase
 {
@@ -20,9 +19,9 @@ class ProofAPIController extends ControllerBase
     /**
      * @return array
      */
-    public function allMovies()
+    public function allVideos()
     {
-        $response = $this->proofAPIRequests->listAllMovies();
+        $response = $this->proofAPIRequests->listAllVideos();
 
         $json = json_decode($response, true);
         $dataArray = $json['data'];
@@ -37,6 +36,7 @@ class ProofAPIController extends ControllerBase
         $page = array(
             '#theme' => 'movies',
             '#movies' => $dataArray,
+            '#redirectTo' => 'proof_api.all_videos',
         );
         
         return $page;
@@ -61,6 +61,7 @@ class ProofAPIController extends ControllerBase
         $page = array(
             '#theme' => 'movies',
             '#movies' => $dataArray,
+            '#redirectTo' => 'proof_api.top_ten_by_views',
         );
 
         return $page;
@@ -84,6 +85,7 @@ class ProofAPIController extends ControllerBase
         $page = array(
             '#theme' => 'movies',
             '#movies' => $dataArray,
+            '#redirectTo' => 'proof_api.top_ten_by_votes',
         );
 
         return $page;
@@ -94,11 +96,19 @@ class ProofAPIController extends ControllerBase
         return $this->redirect('proof_api.new_movie_form');
     }
 
-    public function newVote()
+    public function voteUp($videoID, $redirectTo)
     {
-        $this->proofAPIRequests->postNewVote();
+        $this->proofAPIRequests->postNewVoteUp($videoID);
 
-        return $this->redirect('proof_api.top_ten_by_votes');
+        return $this->redirect($redirectTo);
+    }
+
+    public function voteDown($videoID, $redirectTo)
+    {
+        $this->proofAPIRequests->postNewVoteDown($videoID);
+
+        return $this->redirect($redirectTo);
+
     }
 
     public function viewMovie($videoID)
@@ -107,7 +117,6 @@ class ProofAPIController extends ControllerBase
         $response = $this->proofAPIRequests->getVideo($videoID);
         $json = json_decode($response, true);
         $url = $json['data']['attributes']['url'];
-        //$this->proofAPIRequests->postNewView($videoID);
 
         return new TrustedRedirectResponse($url);
     }

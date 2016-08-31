@@ -16,7 +16,7 @@ parameters:
       tags: []
   factory.keyvalue:
     default: keyvalue.database
-  http.response.debug_cacheability_headers: false
+  http.response.debug_cacheability_headers: true
   factory.keyvalue.expirable:
     default: keyvalue.expirable.database
   filter_protocols:
