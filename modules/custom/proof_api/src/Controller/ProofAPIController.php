@@ -145,6 +145,28 @@ class ProofAPIController extends ControllerBase
     return new TrustedRedirectResponse($url);
   }
 
+  public function videoIsUnique($url, $slug)
+  {
+    $response = $this->proofAPIRequests->listAllVideos();
+
+    $json = json_decode($response, true);
+    $dataArray = $json['data'];
+
+    $http1 = 'https://';
+    $http2 = 'http://';
+    function containsString($url, $substring) {
+      $hasString = strpos($url, $substring);
+      if ($hasString === true) {
+        return true;
+      } else {
+        return false;
+      };
+    }
+
+    $shortUrl =
+
+  }
+
   public static function create(ContainerInterface $container)
   {
     $proofAPIRequests = $container->get('proof_api.proof_api_requests');
