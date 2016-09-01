@@ -2,16 +2,16 @@
 
 function movies_theme()
 {
-    return array
+  return array
+  (
+    'movies' => array
     (
-        'movies' => array
-        (
-            'variables' => array
-            (
-                'movies' => null,
-                'redirectTo' => null,
-            ),
-            'template' => 'movies',
-        ),
-    );
+      'variables' => array
+      (
+          'movies' => null,
+          'redirectTo' => null,
+      ),
+      'template' => 'movies',
+    ),
+  );
 }

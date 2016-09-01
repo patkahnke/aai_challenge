@@ -109,9 +109,15 @@ class ProofAPIController extends ControllerBase
     if (date('N') < 1)
     {
       return $this->redirect('proof_api.new_movie_form');
+
     } else {
-      echo "Sorry - you cannot add new videos on the weekend.";
-    }
+      $page = array(
+        '#theme' => 'bootstrap_modal',
+        '#body' => 'Sorry - You can only post a new movie on weekdays.'
+      );
+    };
+
+    return $page;
   }
 
   public function voteUp($videoID, $redirectTo)
