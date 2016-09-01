@@ -104,16 +104,16 @@ class ProofAPIController extends ControllerBase
     return $page;
   }
 
-  public function newMovie()
+  public function newVideo()
   {
-    if (date('N') < 1)
+    if (date('N') < 6)
     {
-      return $this->redirect('proof_api.new_movie_form');
+      return $this->redirect('proof_api.new_video_form');
 
     } else {
       $page = array(
         '#theme' => 'bootstrap_modal',
-        '#body' => 'Sorry - You can only post a new movie on weekdays.'
+        '#body' => 'Sorry - You can only post a new video on weekdays.'
       );
     };
 
@@ -135,7 +135,7 @@ class ProofAPIController extends ControllerBase
 
   }
 
-  public function viewMovie($videoID)
+  public function viewVideo($videoID)
   {
 
     $response = $this->proofAPIRequests->getVideo($videoID);

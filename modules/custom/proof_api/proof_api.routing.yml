@@ -24,19 +24,19 @@ proof_api.top_ten_by_votes:
   requirements:
     _permission: 'access content'
 
-proof_api.new_movie:
-  path: '/new_movie'
+proof_api.new_video:
+  path: '/new_video'
   defaults:
-    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newMovie'
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newVideo'
     _title: "Post New Video"
   requirements:
     _permission: 'access content'
 
-proof_api.new_movie_form:
-  path: '/new_movie_form'
+proof_api.new_video_form:
+  path: '/new_video_form'
   defaults:
     _title: 'Post a New Video'
-    _form: '\Drupal\proof_api\ProofAPIForms\NewMovieForm'
+    _form: '\Drupal\proof_api\ProofAPIForms\NewVideoForm'
   requirements:
     _permission: 'access content'
 
@@ -56,10 +56,10 @@ proof_api.vote_down:
   requirements:
     _permission: 'access content'
 
-proof_api.view_movie:
-  path: '/view_movie/{videoID}'
+proof_api.view_video:
+  path: '/view_video/{videoID}'
   defaults:
-    _controller: '\Drupal\proof_api\Controller\ProofAPIController::viewMovie'
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::viewVideo'
     _title: "Watch a Video"
   requirements:
     _permission: 'access content'
