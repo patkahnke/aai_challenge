@@ -58,7 +58,7 @@ class NewVideoForm extends FormBase
     if (!UrlHelper::isValid($form_state->getValue('url'), TRUE)) {
         $form_state->setErrorByName('url', t("The movie url '%url' is invalid.", array('%url' => $form_state->getValue('url'))));
     }
-    if ()
+//    if ()
   }
 
   /**
