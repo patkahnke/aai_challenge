@@ -8,7 +8,7 @@ function movies_theme()
     (
       'variables' => array
       (
-          'movies' => null,
+          'videos' => null,
           'redirectTo' => null,
       ),
       'template' => 'movies',

@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ProofAPIController extends ControllerBase
 {
   private $proofAPIRequests;
+  private $proofAPIUtilities;
 
   public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities)
   {
@@ -26,19 +27,17 @@ class ProofAPIController extends ControllerBase
   {
     $response = $this->proofAPIRequests->listAllVideos();
 
-    $json = json_decode($response, true);
-    $dataArray = $json['data'];
     $createdAt = array();
 
-    foreach ($dataArray as $movie) {
-        $createdAt[] = $movie['attributes']['created_at'];
+    foreach ($response as $video) {
+        $createdAt[] = $video['attributes']['created_at'];
     }
 
-    array_multisort($createdAt, SORT_DESC, $dataArray);
+    array_multisort($createdAt, SORT_DESC, $response);
 
     $page = array(
         '#theme' => 'movies',
-        '#movies' => $dataArray,
+        '#videos' => $response,
         '#redirectTo' => 'proof_api.all_videos',
         '#cache' => array
         (
@@ -67,7 +66,7 @@ class ProofAPIController extends ControllerBase
 
     $page = array(
         '#theme' => 'movies',
-        '#movies' => $dataArray,
+        '#videos' => $dataArray,
         '#redirectTo' => 'proof_api.top_ten_by_views',
         '#cache' => array
         (
@@ -95,7 +94,7 @@ class ProofAPIController extends ControllerBase
 
     $page = array(
         '#theme' => 'movies',
-        '#movies' => $dataArray,
+        '#videos' => $dataArray,
         '#redirectTo' => 'proof_api.top_ten_by_votes',
         '#cache' => array
         (

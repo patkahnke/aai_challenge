@@ -11,10 +11,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class NewVideoForm extends FormBase
 {
   private $proofAPIRequests;
+  private $proofAPIUtilities;
 
-  public function __construct(ProofAPIRequests $proofAPIRequests)
+  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities)
   {
       $this->proofAPIRequests = $proofAPIRequests;
+      $this->proofAPIUtilities = $proofAPIUtilities;
   }
 
   public function getFormId()
@@ -55,10 +57,16 @@ class NewVideoForm extends FormBase
 
   public function validateForm(array &$form, FormStateInterface $form_state)
   {
-    if (!UrlHelper::isValid($form_state->getValue('url'), TRUE)) {
-        $form_state->setErrorByName('url', t("The movie url '%url' is invalid.", array('%url' => $form_state->getValue('url'))));
+    $url = $form_state->getValue('url');
+    $slug = $form_state->getValue('slug');
+
+    $videosMatch = $this->proofAPIUtilities->videosMatch($url, $slug);
+
+    if (!UrlHelper::isValid($url, TRUE)) {
+        $form_state->setErrorByName('url', t('Sorry, the video url is invalid.'));
+    } else if ($videosMatch) {
+      $form_state->setErrorByName('title', t('Sorry, this appears to be a duplicate video entry.'));
     }
-//    if ()
   }
 
   /**
@@ -80,7 +88,8 @@ class NewVideoForm extends FormBase
   public static function create(ContainerInterface $container)
   {
     $proofAPIRequests = $container->get('proof_api.proof_api_requests');
+    $proofAPIUtilities = $container->get('proof_api.proof_api_utilities');
 
-    return new static($proofAPIRequests);
+    return new static($proofAPIRequests, $proofAPIUtilities);
   }
 }
