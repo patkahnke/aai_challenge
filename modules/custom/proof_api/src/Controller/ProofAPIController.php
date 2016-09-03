@@ -59,7 +59,7 @@ class ProofAPIController extends ControllerBase
 
     foreach ($dataArray as $movie) {
         $viewTally[] = $movie['attributes']['view_tally'];
-    }
+    };
 
     array_multisort($viewTally, SORT_DESC, $dataArray);
     $dataArray = array_slice($dataArray, 0, 10, true);
@@ -145,18 +145,6 @@ class ProofAPIController extends ControllerBase
 
     return new TrustedRedirectResponse($url);
   }
-
-  public function videoIsUnique($url, $slug)
-  {
-    $response = $this->proofAPIRequests->listAllVideos();
-    $json = json_decode($response, true);
-    $dataArray = $json['data'];
-
-    $videoIsDuplicate = $this->proofAPIUtilities->videoIsDuplicate();
-
-
-
-    }
 
   public static function create(ContainerInterface $container)
   {

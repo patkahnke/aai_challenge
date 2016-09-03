@@ -6,6 +6,7 @@ use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
+use Drupal\proof_api\ProofAPIUtilities\ProofAPIUtilities;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class NewVideoForm extends FormBase
@@ -55,19 +56,24 @@ class NewVideoForm extends FormBase
     return $form;
   }
 
-  public function validateForm(array &$form, FormStateInterface $form_state)
-  {
+  public function validateForm(array &$form, FormStateInterface $form_state) {
     $url = $form_state->getValue('url');
     $slug = $form_state->getValue('slug');
+    $response = $this->proofAPIRequests->listAllVideos();
+    $slugNoDashes = str_replace('-', '', $slug);
+    $slugLowercase = ctype_lower($slugNoDashes);
 
-    $videosMatch = $this->proofAPIUtilities->videosMatch($url, $slug);
+    $videosMatch = $this->proofAPIUtilities->videosMatch($url, $slug, $response);
 
     if (!UrlHelper::isValid($url, TRUE)) {
-        $form_state->setErrorByName('url', t('Sorry, the video url is invalid.'));
+      $form_state->setErrorByName('url', t('Sorry, the video url is invalid.'));
     } else if ($videosMatch) {
-      $form_state->setErrorByName('title', t('Sorry, this appears to be a duplicate video entry.'));
+        $form_state->setErrorByName('title', t('Sorry, this appears to be a duplicate video entry.'));
+    } else if (!$slugLowercase) {
+      $form_state->setErrorByName('slug', t('Sorry, the slug appears to be in the wrong format.'));
     }
   }
+
 
   /**
    * @param array $form
