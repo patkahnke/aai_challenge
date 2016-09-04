@@ -15,8 +15,8 @@ class ProofAPIController extends ControllerBase
 
   public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities)
   {
-      $this->proofAPIRequests = $proofAPIRequests;
-      $this->proofAPIUtilities = $proofAPIUtilities;
+    $this->proofAPIRequests = $proofAPIRequests;
+    $this->proofAPIUtilities = $proofAPIUtilities;
   }
 
   /**
@@ -123,17 +123,30 @@ class ProofAPIController extends ControllerBase
 
   public function voteUp($videoID, $redirectTo)
   {
-    $this->proofAPIRequests->postNewVoteUp($videoID);
-
+    if ($this->proofAPIUtilities->notVotedToday($videoID)) {
+      $this->proofAPIRequests->postNewVoteUp($videoID);
+    } else {
+      $page = array(
+        '#theme' => 'bootstrap_modal',
+        '#body' => 'Sorry - You\'ve already voted on this video today.'
+      );
+    }
     return $this->redirect($redirectTo);
   }
 
   public function voteDown($videoID, $redirectTo)
   {
-    $this->proofAPIRequests->postNewVoteDown($videoID);
+    if ($this->proofAPIUtilities->notVotedToday($videoID)) {
+      $this->proofAPIRequests->postNewVoteUp($videoID);
+    } else {
+      $page = array(
+        '#theme' => 'bootstrap_modal',
+        '#body' => 'Sorry - You\'ve already voted on this video today.'
+      );
+
+    }$this->proofAPIRequests->postNewVoteDown($videoID);
 
     return $this->redirect($redirectTo);
-
   }
 
   public function viewVideo($videoID)

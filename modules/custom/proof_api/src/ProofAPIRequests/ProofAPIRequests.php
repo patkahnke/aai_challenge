@@ -140,28 +140,28 @@ class ProofAPIRequests
     }
 
 
-//    public function postNewView($videoID)
-//    {
-//        $ch = curl_init();
-//
-//        curl_setopt($ch, CURLOPT_URL, "https://proofapi.herokuapp.com/views");
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-//        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-//
-//        curl_setopt($ch, CURLOPT_POST, TRUE);
-//
-//        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-//        \"video_id\": \"$videoID\"
-//        }");
-//
-//        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//            "Content-Type: application/json",
-//            "X-Auth-Token: kFDTf2t7HVfA24Red68sE31K"
-//        ));
-//
-//        curl_exec($ch);
-//        curl_close($ch);
-//    }
+    public function postNewView($videoID)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, "https://proofapi.herokuapp.com/views");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+        \"video_id\": \"$videoID\"
+        }");
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "X-Auth-Token: kFDTf2t7HVfA24Red68sE31K"
+        ));
+
+        curl_exec($ch);
+        curl_close($ch);
+    }
 
     public function getVideo($videoID)
     {

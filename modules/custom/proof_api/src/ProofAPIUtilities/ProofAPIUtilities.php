@@ -8,17 +8,9 @@
 
 namespace Drupal\proof_api\ProofAPIUtilities;
 
-//use Symfony\Component\DependencyInjection\ContainerInterface;
-//use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
+$votedTodayReset = null;
 
 class ProofAPIUtilities {
-
-//  private $proofAPIRequests;
-//
-//  public function __construct(ProofAPIRequests $proofAPIRequests)
-//  {
-//    $this->proofAPIRequests = $proofAPIRequests;
-//  }
 
   public function urlsMatch($url1, $url2) {
     $urlMatches = FALSE;
@@ -59,11 +51,20 @@ class ProofAPIUtilities {
     return $videoMatches;
   }
 
-//  public static function create(ContainerInterface $container)
-//  {
-//    $proofAPIRequests = $container->get('proof_api.proof_api_requests');
-//
-//    return new static($proofAPIRequests);
+  public function notVotedToday($videoID) {
+    $notVoted = true;
+    global $votedToday;
+
+    for ($i = 0; $i < count($votedToday); $i++) {
+      if ($videoID === $votedToday[$i]) {
+        $notVoted = false;
+        };
+    }
+    return $notVoted;
+  }
+
+//  public function addVoteToDatabase($videoID, $userID) {
+//    $this->database->insert()
 //  }
 
 }

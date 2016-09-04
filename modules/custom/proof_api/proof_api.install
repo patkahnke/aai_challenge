@@ -1,0 +1,18 @@
+<?php
+
+function proof_api_schema() {
+  $schema['votesTable'] = array(
+    'description' => 'Stores votes cast per video, per day, per user',
+    'fields' => array(
+      'voteID' => array(
+        'description' => 'The primary identifier for this table',
+        'type' => 'serial',),
+      'userID' => array(
+        'type' => 'varchar',),
+      'videoID' => array(
+        'type' => 'varchar',),
+      'voteDate' => array(
+          'type' => 'varchar'),
+    ),
+      );
+}
