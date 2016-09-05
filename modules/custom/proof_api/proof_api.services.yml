@@ -5,5 +5,3 @@ services:
     class: Drupal\proof_api\ProofAPIForms\NewMovieForm
   proof_api.proof_api_utilities:
     class: Drupal\proof_api\ProofAPIUtilities\ProofAPIUtilities
-  proof_api.proof_api_database:
-    class: Drupal\proof_api\ProofAPIDatabase\ProofAPIDatabase

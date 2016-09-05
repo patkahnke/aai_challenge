@@ -3,6 +3,7 @@
 namespace Drupal\proof_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
 use Drupal\proof_api\ProofAPIUtilities\ProofAPIUtilities;
@@ -12,11 +13,13 @@ class ProofAPIController extends ControllerBase
 {
   private $proofAPIRequests;
   private $proofAPIUtilities;
+  private $connection;
 
-  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities)
+  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities, Connection $connection)
   {
     $this->proofAPIRequests = $proofAPIRequests;
     $this->proofAPIUtilities = $proofAPIUtilities;
+    $this->connection = $connection;
   }
 
   /**
@@ -123,30 +126,39 @@ class ProofAPIController extends ControllerBase
 
   public function voteUp($videoID, $redirectTo)
   {
-    if ($this->proofAPIUtilities->notVotedToday($videoID)) {
+    $request = $this->connection->query('SELECT * FROM {votesTable}');
+
+    if ($this->proofAPIUtilities->notVotedToday($request, $videoID)) {
       $this->proofAPIRequests->postNewVoteUp($videoID);
+
+      return $this->redirect($redirectTo);
+
     } else {
       $page = array(
         '#theme' => 'bootstrap_modal',
         '#body' => 'Sorry - You\'ve already voted on this video today.'
       );
+
+      return $page;
     }
-    return $this->redirect($redirectTo);
   }
 
   public function voteDown($videoID, $redirectTo)
   {
-    if ($this->proofAPIUtilities->notVotedToday($videoID)) {
-      $this->proofAPIRequests->postNewVoteUp($videoID);
+    $request = $this->connection->query('SELECT * FROM {votesTable}');
+
+    if ($this->proofAPIUtilities->notVotedToday($request, $videoID)) {
+      $this->proofAPIRequests->postNewVoteDown($videoID);
+
+      return $this->redirect($redirectTo);
+
     } else {
       $page = array(
         '#theme' => 'bootstrap_modal',
         '#body' => 'Sorry - You\'ve already voted on this video today.'
       );
-
-    }$this->proofAPIRequests->postNewVoteDown($videoID);
-
-    return $this->redirect($redirectTo);
+      return $page;
+    }
   }
 
   public function viewVideo($videoID)
@@ -163,8 +175,9 @@ class ProofAPIController extends ControllerBase
   {
     $proofAPIRequests = $container->get('proof_api.proof_api_requests');
     $proofAPIUtilities = $container->get('proof_api.proof_api_utilities');
+    $connection = $container->get('connection');
 
-    return new static($proofAPIRequests, $proofAPIUtilities);
+    return new static($proofAPIRequests, $proofAPIUtilities, $connection);
   }
 
 

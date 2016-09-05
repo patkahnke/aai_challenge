@@ -8,8 +8,6 @@
 
 namespace Drupal\proof_api\ProofAPIUtilities;
 
-$votedTodayReset = null;
-
 class ProofAPIUtilities {
 
   public function urlsMatch($url1, $url2) {
@@ -51,20 +49,17 @@ class ProofAPIUtilities {
     return $videoMatches;
   }
 
-  public function notVotedToday($videoID) {
+  public function notVotedToday($response, $videoID) {
     $notVoted = true;
-    global $votedToday;
+    $userID = \Drupal::currentUser()->id();
+    $today = date('Ymd');
 
-    for ($i = 0; $i < count($votedToday); $i++) {
-      if ($videoID === $votedToday[$i]) {
+    for ($i = 0; $i < count($response); $i++) {
+      if ($videoID === $response[$i]['videoID'] && $userID === $response[$i]['userID'] &&  $today === $response[$i]['voteDate']) {
         $notVoted = false;
         };
     }
     return $notVoted;
   }
-
-//  public function addVoteToDatabase($videoID, $userID) {
-//    $this->database->insert()
-//  }
 
 }
